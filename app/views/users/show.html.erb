@@ -2,9 +2,9 @@ Welcome to the theme park <%=@user.name %>!
 
 <br></br>
 <% if @user.admin == true %>
-  ADMIN 
+  ADMIN
   <% else %>
-  Non-Admin
+  GUEST
   <% end %>
 
 <p>Mood: <%= @user.mood %></p>
@@ -16,3 +16,5 @@ Welcome to the theme park <%=@user.name %>!
 <%= link_to "Edit", edit_user_path(@user) %>
 <br></br>
 <%= link_to "See attractions", attractions_path %>
+
+<%= @user.rides.last.take_ride if @user.rides.size > 0 %>
