@@ -1,0 +1,20 @@
+Name: <%= @attraction.name%>
+<br></br>
+Total Number of Users: 
+<br></br>
+Ticket Requirement: <%= @attraction.tickets %>
+<br></br>
+Height Requirement: <%= @attraction.min_height %>
+<br></br>
+Nausea Rating: <%= @attraction.nausea_rating %>
+<br></br>
+Happiness Rating: <%= @attraction.happiness_rating %>
+<br></br>
+<form action="/rides/create" method="post">
+<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <%= hidden_field_tag "attraction_id", @attraction.id %>
+  <%= hidden_field_tag "user_id", @user.id %>
+  <%= submit_tag "Go on this ride" %>
+</form>
+<br></br>
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>

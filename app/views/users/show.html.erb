@@ -1,0 +1,18 @@
+Welcome to the theme park <%=@user.name %>! 
+
+<br></br>
+<% if @user.admin == true %>
+  ADMIN 
+  <% else %>
+  Non-Admin
+  <% end %>
+
+<p>Mood: <%= @user.mood %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height: <%= @user.height %></p>
+
+<%= button_to "Log Out", logout_path %>
+
+<%= link_to "Edit", edit_user_path(@user) %>
+<br></br>
+<%= link_to "See attractions", attractions_path %>

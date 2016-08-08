@@ -1,0 +1,42 @@
+Listing Attractions
+<br></br>
+
+<table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tr>
+      <td>
+        <strong>Name</strong>
+      </td>
+
+      <td>
+        <strong>Tickets</strong>
+      </td>
+
+      <td>
+        <strong>Details</strong>
+      </td>
+    </tr>
+    
+    <% @attractions.each do |attraction| %>
+    <tr>
+      <td><%= attraction.name %></td>
+      <td><%= attraction.tickets %></td>
+      <% if @user.admin == true %>
+      <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+      <% else %>
+      <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+      <td>
+      <%= button_to "Delete", attractions_delete_path(attraction), data: {confirm: "Are you sure?"} %>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+
+</table>
+
+<%= link_to "New Attraction", new_attraction_path %>
